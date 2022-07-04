@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text, View } from "react-native";
 import styles from "./Styles";
 
-//Home Screen
+//Cart Screen
 const CartScreen = () => {
   return (
     <View style={styles.container}>

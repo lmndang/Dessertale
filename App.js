@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+//import { Text, View, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -11,7 +11,7 @@ import MenuScreen from "./components/MenuScreen";
 import CreateScreen from "./components/CreateScreen";
 import HomeScreen from "./components/HomeScreen";
 import CartScreen from "./components/CartScreen";
-import MoreScreen from "./components/MenuScreen";
+import MoreScreen from "./components/MoreScreen";
 
 
 const Tab = createBottomTabNavigator();
