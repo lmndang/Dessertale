@@ -1,8 +1,4 @@
 import * as React from "react";
-<<<<<<< HEAD
-=======
-//import { Text, View, StyleSheet } from "react-native";
->>>>>>> 9d764514f7f0dcebca46e1f91411affe2e135120
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
