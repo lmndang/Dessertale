@@ -14,12 +14,12 @@ const CakeMenu = () => {
       });
   }, []);
 
-  console.log(cupcakeList);
-
   return (
     <View style={styles.container}>
       {cupcakeList.map((cupcake) => {
-        return <Text key={cupcake.id}>{cupcake.name}</Text>;
+        if (cupcake.id === 1) {
+          return <Text key={cupcake.id}>{cupcake.name}</Text>;
+        }
       })}
     </View>
   );
