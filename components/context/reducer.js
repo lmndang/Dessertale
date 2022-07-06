@@ -5,6 +5,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       itemOnCart: action.payload.numberOfItem,
+      cartData: action.payload.newCart
     };
   }
 

@@ -3,7 +3,7 @@ import { Text, View, Button } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import styles from "./Styles";
 
-import {useAppContext} from "./context/appContext";
+import { useAppContext } from "./context/appContext";
 
 const CakeMenu = () => {
   const [cupcakeList, setCupcakeList] = useState([]);
@@ -28,19 +28,23 @@ const CakeMenu = () => {
 };
 
 const WaffleMenu = () => {
+  const { itemOnCart, addItemToCart } = useAppContext();
 
-  const {itemOnCart, addItemToCart} = useAppContext();
+  const buttonPressedHandler = () => {
+    const cartItem = {
+      name: "Custom Ice-cream",
+      detail:
+        "Regular cone | Chocolate | Heart-shaped sprinkles | Fruit passion",
+      price: 10.25,
+    };
 
-  const buttonPressedHandler = ()=>{
-
-    addItemToCart(itemOnCart + 1);
-  }
-
+    addItemToCart(itemOnCart + 1, cartItem);
+  };
 
   return (
     <View style={styles.container}>
       <Text>Waffle</Text>
-      <Button title="Add" onPress={buttonPressedHandler}/>
+      <Button title="Add" onPress={buttonPressedHandler} />
     </View>
   );
 };
