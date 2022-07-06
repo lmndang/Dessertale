@@ -1,37 +1,40 @@
 import * as React from "react";
-import { Text, View, Button } from "react-native";
+import { Text, View} from "react-native";
 import styles from "./Styles";
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from "@react-navigation/stack";
+import ButtonWithBackground from "./AppStyles/ButtonWithBackground";
 
 const Stack = createStackNavigator();
 
-const Home = ({navigation}) =>{
+const Menu = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate("Profile")}
-        />
-         <Button
-        title="Go to Setting"
-        onPress={() => navigation.navigate("Setting")}
-        />
-    </View>
-  );
-}
-
-const Profile = () =>{
-  return (
-    <View style={styles.container}>
-      <Text>Profile Page!</Text>
-    </View>
-  );
-}
-
-const Setting = () =>{
-  return (
-    <View style={styles.container}>
-      <Text>Setting Page!</Text>
+      <ButtonWithBackground
+        text="Cakes"
+        onPress={() => 
+          navigation.navigate("Products", {title: "Cakes"})}
+        color='#FF869E'
+      />
+      <ButtonWithBackground
+        text="Ice Creams"
+        onPress={() => navigation.navigate("Products", {title: "Ice Creams"})}
+        color='#FF869E'
+      />
+      <ButtonWithBackground
+        text="Cupcakes"
+        onPress={() => navigation.navigate("Products", {title: "Cupcakes"})}
+        color='#FF869E'
+      />
+      <ButtonWithBackground
+        text="Waffles"
+        onPress={() => navigation.navigate("Products", {title: "Waffles"})}
+        color='#FF869E'
+      />
+      <ButtonWithBackground
+        text="Pancakes"
+        onPress={() => navigation.navigate("Products", {title: "Pancakes"})}
+        color='#FF869E'
+      />
     </View>
   );
 }
@@ -42,6 +45,39 @@ const MenuScreen = () => {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Setting" component={Setting} />
+    </Stack.Navigator>
+  );
+};
+
+import Products from "./Products";
+
+const MenuScreen = () => {
+  return (
+    <Stack.Navigator >
+      <Stack.Screen
+       name="Our Varieties!"
+      component={Menu}
+      options={() => ({ 
+        headerShown: false,
+        })}
+       />
+
+      <Stack.Screen 
+      name="Products" 
+      component={Products} 
+      options={({ route }) => ({ 
+        title: route.params.title,
+        headerBackTitleVisible: false,
+        headerStyle: {
+          backgroundColor: '#FF869E',
+          height: 70,
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          fontSize: 20,
+        },
+       })}/>
     </Stack.Navigator>
   );
 };
