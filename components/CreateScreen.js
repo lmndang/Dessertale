@@ -1,12 +1,26 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import styles from "./Styles";
 
 const CakeMenu = () => {
+  const [cupcakeList, setCupcakeList] = useState([]);
+
+  useEffect(() => {
+    fetch("https://dessertale-api.herokuapp.com/cupcakes")
+      .then((response) => response.json())
+      .then((data) => {
+        setCupcakeList(data.cake);
+      });
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Cake</Text>
+      {cupcakeList.map((cupcake) => {
+        if (cupcake.id === 1) {
+          return <Text key={cupcake.id}>{cupcake.name}</Text>;
+        }
+      })}
     </View>
   );
 };
