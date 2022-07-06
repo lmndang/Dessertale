@@ -39,16 +39,6 @@ const Menu = ({ navigation }) => {
   );
 }
 
-const MenuScreen = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Profile" component={Profile} />
-      <Stack.Screen name="Setting" component={Setting} />
-    </Stack.Navigator>
-  );
-};
-
 import Products from "./Products";
 
 const MenuScreen = () => {
