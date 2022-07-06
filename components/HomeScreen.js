@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
+import ImageContainer from "./ImageContainer";
 //import styles from "./Styles";
 
 //Home Screen
@@ -26,10 +27,7 @@ const HomeScreen = () => {
         <View style={styles.imageContainer}>
           {bestSellerList.map((item) => {
             return (
-              <View key={item.id} style={styles.imageBox}>
-                <Image style={styles.images} source={{ uri: `${item.img}` }} />
-                <Text style={{ textAlign: "center" }}>{item.name}</Text>
-              </View>
+              <ImageContainer key={item.id} img={item.img} name={item.name}/>
             );
           })}
         </View>
@@ -38,18 +36,12 @@ const HomeScreen = () => {
       <View>
         <View style={styles.box}>
           <View>
-            <Text style={styles.title}>Top Creation</Text>
+            <Text style={styles.title}>Top Creations</Text>
           </View>
           <View style={styles.imageContainer}>
             {topCreationList.map((item) => {
               return (
-                <View key={item.id} style={styles.imageBox}>
-                  <Image
-                    style={styles.images}
-                    source={{ uri: `${item.img}` }}
-                  />
-                  <Text style={{ textAlign: "center" }}>{item.name}</Text>
-                </View>
+                <ImageContainer key={item.id} img={item.img} name={item.name}/>
               );
             })}
           </View>
@@ -84,16 +76,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     height: 180,
-  },
-
-  imageBox: {
-    // borderColor: "blue",
-    // borderWidth: 1,
-  },
-
-  images: {
-    height: 125,
-    width: 125,
   },
 
   title: {

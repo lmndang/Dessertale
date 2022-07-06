@@ -32,7 +32,7 @@ const MoreScreen = () => {
           customers have a positive feeling and a better mood after having done
           the whole process in a couple of clicks!
         </Text> */}
-        <Text style={styles.title}>Location</Text>
+        <Text style={styles.title}>Our Locations</Text>
         <View>
           <MapView
             style={styles.map}
