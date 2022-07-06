@@ -12,6 +12,7 @@ export default function TextStyle(props) {
     text:{
       margin: 5,
       fontSize: 25,
+      // fontFamily: 'Cookie-Regular',
       color:'#9B9B9B',
       fontWeight: 'bold',
     },

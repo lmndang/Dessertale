@@ -1,6 +1,9 @@
-import * as React from "react";
+import React, { useState } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+import * as Font from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
@@ -15,6 +18,23 @@ import MoreScreen from "./components/MoreScreen";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+
+  const [IsReady, SetIsReady] = useState(false);
+
+  const LoadFonts = async () => {
+    await useFonts();
+  };
+
+  if (!IsReady) {
+    return (
+      <AppLoading
+        startAsync={LoadFonts}
+        onFinish={() => SetIsReady(true)}
+        onError={() => {}}
+      />
+    );
+  }
+
   return (
     <NavigationContainer>
       <Tab.Navigator
