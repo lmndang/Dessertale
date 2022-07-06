@@ -56,13 +56,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 100,
+    padding: 20,
+    paddingTop: 120
   },
 
   box: {
-    textAlign: "left",
     height: 250,
-    width: 395,
+    width: 390,
     marginBottom: 100,
     display: "flex",
     flexDirection: "column",
