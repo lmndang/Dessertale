@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Text, View } from "react-native";
+import { Text, View, Button } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import styles from "./Styles";
+
+import {useAppContext} from "./context/appContext";
 
 const CakeMenu = () => {
   const [cupcakeList, setCupcakeList] = useState([]);
@@ -26,9 +28,19 @@ const CakeMenu = () => {
 };
 
 const WaffleMenu = () => {
+
+  const {itemOnCart, addItemToCart} = useAppContext();
+
+  const buttonPressedHandler = ()=>{
+
+    addItemToCart(itemOnCart + 1);
+  }
+
+
   return (
     <View style={styles.container}>
       <Text>Waffle</Text>
+      <Button title="Add" onPress={buttonPressedHandler}/>
     </View>
   );
 };

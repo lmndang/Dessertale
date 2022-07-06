@@ -1,14 +1,30 @@
 import React, { createContext, useReducer, useContext } from "react";
 
-import {ADD_TO_CART} from "./actions";
+import reducer from "./reducer";
 
-const moods = ["Happy", "Sad"];
-const AppContext = createContext(moods);
+import { ADD_TO_CART } from "./actions";
+
+const initialState = {
+  itemOnCart: 0,
+};
+
+const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const addItemToCart = async (numberOfItem) => {
+
+    dispatch({ type: ADD_TO_CART, payload: {numberOfItem} });
+  };
+
   return (
-    <AppContext.Provider value={moods[0]}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, addItemToCart }}>{children}</AppContext.Provider>
   );
 };
 
-export {AppContext, AppContextProvider};
+const useAppContext = () => {
+  return useContext(AppContext);
+};
+
+export { useAppContext, AppContextProvider, initialState };

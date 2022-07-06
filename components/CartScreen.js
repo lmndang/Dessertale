@@ -1,17 +1,17 @@
-import React, {useContext} from "react";
-import { Text, View } from "react-native";
+import React from "react";
+import { Text, View,Button } from "react-native";
 import styles from "./Styles";
 
-import {AppContext} from "./context/appContext";
+import {useAppContext} from "./context/appContext";
 
 //Cart Screen
 const CartScreen = () => {
 
-  const mood = useContext(AppContext);
+  const {itemOnCart} = useAppContext();
 
   return (
     <View style={styles.container}>
-      <Text>{mood}</Text>
+      <Text>{itemOnCart}</Text>
     </View>
   );
 };
