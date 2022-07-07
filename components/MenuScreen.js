@@ -30,7 +30,7 @@ const Menu = ({ navigation }) => {
         color="#FF869E"
       />
       <ButtonWithBackground
-        text="Pancakes"
+        text="Pancakes and Crepes"
         onPress={() => navigation.navigate("Products", { title: "Pancakes", passNavigation: navigation  })}
         color="#FF869E"
       />

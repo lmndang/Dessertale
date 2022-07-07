@@ -1,7 +1,8 @@
 import * as React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity, Platform } from "react-native";
 
-import { AntDesign } from '@expo/vector-icons';
+
+import ScrollViewStyle from "./AppStyles/ScrollViewStyle";
 
 //Products Screen
 const ProductDetail = (props) => {
@@ -12,7 +13,7 @@ const ProductDetail = (props) => {
   };
 
   return (
-    <View>
+    <ScrollViewStyle style={productDetailStyle.background}>
       <View style={productDetailStyle.imageBox}>
         <Image
           style={productDetailStyle.image}
@@ -21,23 +22,47 @@ const ProductDetail = (props) => {
         <Text style={productDetailStyle.text}>{productDetailObj.name}</Text>
       </View>
 
-      <View style={productDetailStyle.btnBox}>
-      <AntDesign name="pluscircleo" style={productDetailStyle.plus} size={24} color="black"/>
+      <Text style={productDetailStyle.description}>
+          {productDetailObj.description}
+        </Text>
+        <Text style={productDetailStyle.title}>Nutritional Information</Text>
+        <Text style={productDetailStyle.nutrition}>
+          {productDetailObj.nutrition}
+        </Text>
 
+      <View style={productDetailStyle.btnBox}>
         <TouchableOpacity activeOpacity={0.5} onPress={callFun}>
           <View style={productDetailStyle.btn}>
             <Text style={productDetailStyle.txt}>Add to Cart</Text>
           </View>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollViewStyle>
   );
 };
 
 const productDetailStyle = StyleSheet.create({
-  plus:{
-    display: 'block',
-    backgroundColor: 'pink',
+  description: {
+    textAlign: 'justify',
+    margin: 15,
+    color: '#555555',
+    lineHeight: 20,
+  },
+  title: {
+    textAlign: 'justify',
+    margin: 15,
+    marginBottom: 0,
+    color: '#333333',
+    fontSize: 20,
+    // backgroundColor: "pink",
+  },
+  nutrition: {
+    color: '#555555',
+    textAlign: 'justify',
+    marginTop: 10,
+    margin: 15,
+    lineHeight: 25,
+    // backgroundColor: "green",
   },
   imageBox: {
     display: "flex",
@@ -51,29 +76,40 @@ const productDetailStyle = StyleSheet.create({
   },
 
   text: {
+    color: '#A10035',
     margin: 20,
     fontSize: 24,
   },
 
   btnBox: {
-    display: "flex",
+    flex: 1,
+    justifyContent: 'flex-end',
+    // display: "flex",
     margin: 20,
-    marginTop: 300,
-    backgroundColor: 'green',
+    marginTop: 60,
   },
 
   btn: {
-    backgroundColor: "#A10035",
-    alignSelf: 'flex-end',
+    position:'absolute',
+    alignSelf: "flex-end",
+    bottom: 0,
     width: 130,
-    height: 60,
+    height: 50,
     borderRadius: 24,
     alignItems: "center",
     justifyContent: "center",
+    ...Platform.select({
+      ios: { backgroundColor: "#A10035" },
+      android: { backgroundColor: "#A10035"}
+    })
   },
   txt: {
     color: "white",
     fontSize: 18,
+  },
+
+  background: {
+    backgroundColor:'#FFC0CB'
   },
 });
 
