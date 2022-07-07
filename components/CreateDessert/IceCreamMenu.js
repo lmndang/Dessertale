@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import styles from '../Styles';
 
 import ProductCreate from './ProductCreate';
 import ScrollView from '../AppStyles/ScrollViewStyle';
 
+import {useAppContext} from "../context/appContext";
+
 const IceCreamMenu = () => {
+
+  const { itemOnCart, addItemToCart } = useAppContext();
+
   const [cone, setCone] = useState([]);
   const [coneName, setConeName] = useState('');
 
@@ -41,6 +46,7 @@ const IceCreamMenu = () => {
     var str =
       coneName + ' | ' + iceName + ' | ' + sprinklesName + ' | ' + toppingName;
     var iceCream = { name: 'Custom IceCream', detail: str, price: 6.75 };
+    addItemToCart(itemOnCart +1,iceCream);
   };
 
   return (

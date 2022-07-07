@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import styles from '../Styles';
 
 import ProductCreate from './ProductCreate';
 import ScrollView from '../AppStyles/ScrollViewStyle';
 
+import {useAppContext} from "../context/appContext";
+
 const Cupcake = () => {
+
+  const { itemOnCart, addItemToCart } = useAppContext();
+
   const [cakeList, setCakeList] = useState([]);
   const [cakeName, setCakeName] = useState('');
 
@@ -47,6 +52,8 @@ const Cupcake = () => {
       ' | ' +
       toppingName;
     var cupcake = { name: 'Custom Cupcake', detail: str, price: 12.25 };
+
+    addItemToCart(itemOnCart +1,cupcake);
   };
 
   return (

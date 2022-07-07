@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import styles from '../Styles';
 
 import ProductCreate from './ProductCreate';
 import ScrollView from '../AppStyles/ScrollViewStyle';
 
+import {useAppContext} from "../context/appContext";
+
 const WaffleMenu = () => {
+
+  const { itemOnCart, addItemToCart } = useAppContext();
+
   const [base, setBase] = useState([]);
   const [baseName, setBaseName] = useState('');
 
@@ -38,6 +43,7 @@ const WaffleMenu = () => {
   const addToCart = () => {
     var str = baseName + ' | ' + iceName + ' | ' + toppingName;
     var waffle = { name: 'Custom Waffle', detail: str, price: 10.5 };
+    addItemToCart(itemOnCart +1,waffle);
   };
 
   return (

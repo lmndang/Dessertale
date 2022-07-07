@@ -1,5 +1,12 @@
 import React from "react";
-import { Text, View, StyleSheet, Dimensions, Button } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Dimensions,
+  Button,
+  ScrollView,
+} from "react-native";
 //import styles from "./Styles";
 
 import { useAppContext } from "./context/appContext";
@@ -9,72 +16,75 @@ const windowWidth = Dimensions.get("window").width;
 
 //Cart Screen
 const CartScreen = () => {
-  const { cartData } = useAppContext();
-  console.log(cartData);
+  const { cartData, itemOnCart } = useAppContext();
+  let subtotal = 0.0;
+  let discount = 0.0;
+  let tax = 0.0;
+  let total = 0.0;
+
+  let calculate = cartData.map((item) => {
+    subtotal += item.price;
+    return true;
+  });
+
+  discount = subtotal * 0.1;
+  total = subtotal - discount;
+  tax = total * 0.13;
+  total = total + tax;
+
+  //Round number
+  subtotal = subtotal.toFixed(2);
+  discount = discount.toFixed(2);
+  tax = tax.toFixed(2);
+  total = total.toFixed(2);
 
   return (
     <View style={styles.container}>
-      <View style={styles.box}>
-        <View style={styles.cartItemContainer}>
-          <View>
-            <View style={styles.itemHeading}>
-              <Text style={styles.itemTitle}>Custom Ice-cream</Text>
-              <Text style={styles.itemPrice}>$10.25</Text>
-            </View>
+      <ScrollView>
+        <View style={styles.box}>
+          {cartData.map((item) => {
+            return (
+              <View style={styles.cartItemContainer}>
+                <View>
+                  <View style={styles.itemHeading}>
+                    <Text style={styles.itemTitle}>{item.name}</Text>
+                    <Text style={styles.itemPrice}>${item.price.toFixed(2)}</Text>
+                  </View>
 
-            <Text style={styles.itemDetails}>
-              Regular cone | Chocolate | Heart-shaped sprinkles | Fruit passion
-            </Text>
+                  <Text style={styles.itemDetails}>{item.detail}</Text>
+                </View>
+
+                <View style={styles.btnContainer}>
+                  <View style={styles.btnRemove}>
+                    <Button color="white" title="Remove" />
+                  </View>
+                </View>
+              </View>
+            );
+          })}
+        </View>
+        <View style={[styles.box, styles.totalItemContainer]}>
+          <View style={styles.subTotal}>
+            <Text style={styles.subTotalText}>Subtotal</Text>
+            <Text style={styles.subTotalText}>${subtotal}</Text>
           </View>
-
-          <View style={styles.btnContainer}>
-            <View style={styles.btnRemove}>
-              <Button color="white" title="Remove" />
-            </View>
+          <View style={styles.subTotal}>
+            <Text style={styles.subTotalText}>Promotion</Text>
+            <Text style={styles.promotionTex}>-${discount}</Text>
+          </View>
+          <View style={styles.subTotal}>
+            <Text style={styles.subTotalText}>Taxes</Text>
+            <Text style={styles.subTotalText}>${tax}</Text>
+          </View>
+          <View style={styles.subTotal}>
+            <Text style={styles.totalText}>Total</Text>
+            <Text style={styles.totalText}>${total}</Text>
+          </View>
+          <View style={styles.btnCheckout}>
+            <Button color="white" title="Place Order" />
           </View>
         </View>
-
-        <View style={styles.cartItemContainer}>
-          <View>
-            <View style={styles.itemHeading}>
-              <Text style={styles.itemTitle}>Custom Waffle</Text>
-              <Text style={styles.itemPrice}>$12.75</Text>
-            </View>
-
-            <Text style={styles.itemDetails}>
-              Regular Brussels Waffle | Mix of berries
-            </Text>
-          </View>
-
-          <View style={styles.btnContainer}>
-            <View style={styles.btnRemove}>
-              <Button color="white" title="Remove" />
-            </View>
-          </View>
-        </View>
-      </View>
-      <View style={[styles.box, styles.totalItemContainer]}>
-        <View style={styles.subTotal}>
-          <Text style={styles.subTotalText}>Subtotal</Text>
-          <Text style={styles.subTotalText}>$23.00</Text>
-        </View>
-        <View style={styles.subTotal}>
-          <Text style={styles.subTotalText}>Promotion</Text>
-          <Text style={styles.promotionTex}>-$2.30</Text>
-        </View>
-        <View style={styles.subTotal}>
-          <Text style={styles.subTotalText}>Taxes</Text>
-          <Text style={styles.subTotalText}>$2.70</Text>
-        </View>
-        <View style={styles.subTotal}>
-          <Text style={styles.totalText}>Total</Text>
-          <Text style={styles.totalText}>$23.40</Text>
-        </View>
-        <View style={styles.btnCheckout}>
-        <Button color="white" title="Place Order" />
-        </View>
-       
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -95,7 +105,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "#FFC4C4"
+    borderBottomColor: "#FFC4C4",
   },
 
   itemHeading: {
@@ -132,11 +142,11 @@ const styles = StyleSheet.create({
   btnRemove: {
     width: 100,
     backgroundColor: "#A10035",
-    borderRadius: 5
+    borderRadius: 5,
   },
 
   totalItemContainer: {
-    padding: 10
+    padding: 10,
   },
 
   subTotal: {
@@ -155,16 +165,16 @@ const styles = StyleSheet.create({
     color: "green",
   },
 
-  totalText:{
+  totalText: {
     fontWeight: "bold",
     fontSize: 16,
-    marginTop: 10
+    marginTop: 10,
   },
 
-  btnCheckout:{
+  btnCheckout: {
     backgroundColor: "black",
     marginTop: 25,
     borderRadius: 5,
-  }
+  },
 });
 export default CartScreen;
