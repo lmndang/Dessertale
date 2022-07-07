@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
-
 const ImageContainer = (props) => {
   return (
     <View style={styles.imageBox}>
@@ -17,8 +16,9 @@ const styles = StyleSheet.create({
   },
 
   images: {
-    height: 125,
-    width: 125,
+    height: 135,
+    width: 135,
+    margin:15,
   },
 });
 

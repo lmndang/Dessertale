@@ -1,5 +1,4 @@
-import React from "react";
-//import { Text, View, StyleSheet } from "react-native";
+import React, { useState } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -18,6 +17,7 @@ import {AppContextProvider} from "./components/context/appContext";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+
   return (
     <AppContextProvider>
       <NavigationContainer>

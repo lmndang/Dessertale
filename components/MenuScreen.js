@@ -1,61 +1,46 @@
 import * as React from "react";
-import { Text, View, Button, TouchableOpacity, Image } from "react-native";
+import { View } from "react-native";
 import styles from "./Styles";
 import { createStackNavigator } from "@react-navigation/stack";
+import ButtonWithBackground from "./AppStyles/ButtonWithBackground";
 
 const Stack = createStackNavigator();
 
-const Home = ({ navigation }) => {
+const Menu = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Button
-        title="Go to Cake"
-        onPress={() => navigation.navigate("Cake")}
+      <ButtonWithBackground
+        text="Cakes"
+        onPress={() => navigation.navigate("Products", { title: "Cakes", passNavigation: navigation })}
+        color="#FF869E"
       />
-      <Button
-        title="Go to Setting"
-        onPress={() => navigation.navigate("Setting")}
+      <ButtonWithBackground
+        text="Ice Creams"
+        onPress={() => navigation.navigate("Products", { title: "Ice Creams", passNavigation: navigation  })}
+        color="#FF869E"
+      />
+      <ButtonWithBackground
+        text="Cupcakes"
+        onPress={() => navigation.navigate("Products", { title: "Cupcakes", passNavigation: navigation  })}
+        color="#FF869E"
+      />
+      <ButtonWithBackground
+        text="Waffles"
+        onPress={() => navigation.navigate("Products", { title: "Waffles", passNavigation: navigation  })}
+        color="#FF869E"
+      />
+      <ButtonWithBackground
+        text="Pancakes and Crepes"
+        onPress={() => navigation.navigate("Products", { title: "Pancakes", passNavigation: navigation  })}
+        color="#FF869E"
       />
     </View>
   );
 };
 
-const Cake = ({ navigation }) => {
-  const onPressButton = () => {
-    navigation.navigate("Product");
-  };
-  return (
-    <View style={styles.container}>
-      <Text>Profile Page!</Text>
-      <TouchableOpacity onPress={onPressButton}>
+import Products from "./Products";
+import ProductDetail from "./ProductDetail";
 
-        <Image
-          style={{ height: 100, width: 100 }}
-          source={{
-            uri: "https://i.natgeofe.com/n/46b07b5e-1264-42e1-ae4b-8a021226e2d0/domestic-cat_thumb_square.jpg",
-          }}
-        />
-        
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const Setting = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Setting Page!</Text>
-    </View>
-  );
-};
-
-const Product = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Product Page!</Text>
-    </View>
-  );
-};
 
 const MenuScreen = () => {
   return (
@@ -64,6 +49,37 @@ const MenuScreen = () => {
       <Stack.Screen name="Cake" component={Cake} />
       <Stack.Screen name="Setting" component={Setting} />
       <Stack.Screen name="Product" component={Product} />
+      <Stack.Screen
+        name="Our Varieties!"
+        component={Menu}
+        options={() => ({
+          headerShown: false,
+        })}
+      />
+
+      <Stack.Screen
+        name="Products"
+        component={Products}
+        options={({ route }) => ({
+          title: route.params.title,
+          headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: "#FF869E",
+            height: 70,
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+            fontSize: 20,
+          },
+        })}
+      />
+
+      <Stack.Screen name="ProductDetail" component={ProductDetail} 
+      options={({ route }) => ({
+        title: '',
+        headerBackTitleVisible: false,
+      })}/>
     </Stack.Navigator>
   );
 };

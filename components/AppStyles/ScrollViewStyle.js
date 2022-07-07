@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet} from "react-native";
 
 export default function ScrollViewStyle(props) {
     return (
-      <ScrollView style={[scrollViewStyle.scrollView, props.check]}>
+      <ScrollView style={[scrollViewStyle.scrollView, props.style]}>
         {props.children}
       </ScrollView>
     );
