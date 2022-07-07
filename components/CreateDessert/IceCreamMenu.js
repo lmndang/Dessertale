@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, Alert } from 'react-native';
 import styles from '../Styles';
 
 import ProductCreate from './ProductCreate';
@@ -47,6 +47,7 @@ const IceCreamMenu = () => {
       coneName + ' | ' + iceName + ' | ' + sprinklesName + ' | ' + toppingName;
     var iceCream = { name: 'Custom IceCream', detail: str, price: 6.75 };
     addItemToCart(itemOnCart +1,iceCream);
+    Alert.alert("Custom cupcake added to cart!", "");
   };
 
   return (

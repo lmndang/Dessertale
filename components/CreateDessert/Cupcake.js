@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, Alert } from 'react-native';
 import styles from '../Styles';
 
 import ProductCreate from './ProductCreate';
@@ -54,6 +54,7 @@ const Cupcake = () => {
     var cupcake = { name: 'Custom Cupcake', detail: str, price: 12.25 };
 
     addItemToCart(itemOnCart +1,cupcake);
+    Alert.alert("Custom cupcake added to cart!", "");
   };
 
   return (
