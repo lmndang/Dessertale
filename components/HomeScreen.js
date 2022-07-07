@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 import ImageContainer from "./ImageContainer";
 //import styles from "./Styles";
 
@@ -25,11 +25,13 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.imageContainer}>
-          {bestSellerList.map((item) => {
-            return (
-              <ImageContainer key={item.id} img={item.img} name={item.name}/>
-            );
-          })}
+          <ScrollView horizontal={true}>
+            {bestSellerList.map((item) => {
+              return (
+                <ImageContainer key={item.id} img={item.img} name={item.name} />
+              );
+            })}
+          </ScrollView>
         </View>
       </View>
 
@@ -41,7 +43,7 @@ const HomeScreen = () => {
           <View style={styles.imageContainer}>
             {topCreationList.map((item) => {
               return (
-                <ImageContainer key={item.id} img={item.img} name={item.name}/>
+                <ImageContainer key={item.id} img={item.img} name={item.name} />
               );
             })}
           </View>
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
-    paddingTop: 120
+    paddingTop: 120,
   },
 
   box: {

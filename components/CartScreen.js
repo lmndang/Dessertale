@@ -6,6 +6,7 @@ import {
   Dimensions,
   Button,
   ScrollView,
+  TouchableOpacity
 } from "react-native";
 //import styles from "./Styles";
 
@@ -54,7 +55,9 @@ const CartScreen = () => {
                 <View>
                   <View style={styles.itemHeading}>
                     <Text style={styles.itemTitle}>{item.name}</Text>
-                    <Text style={styles.itemPrice}>${item.price.toFixed(2)}</Text>
+                    <Text style={styles.itemPrice}>
+                      ${item.price.toFixed(2)}
+                    </Text>
                   </View>
 
                   <Text style={styles.itemDetails}>{item.detail}</Text>
@@ -62,7 +65,9 @@ const CartScreen = () => {
 
                 <View style={styles.btnContainer}>
                   <View style={styles.btnRemove}>
-                    <Button color="white" onPress={() => removeCartItem(itemOnCart -1, index)} title="Remove" />
+                    <TouchableOpacity onPress={() => removeCartItem(itemOnCart - 1, index)}>
+                      <Text style={styles.btnRemoveText}>Remove</Text>
+                    </TouchableOpacity>
                   </View>
                 </View>
               </View>
@@ -87,7 +92,9 @@ const CartScreen = () => {
             <Text style={styles.totalText}>${total}</Text>
           </View>
           <View style={styles.btnCheckout}>
-            <Button color="white" title="Place Order" />
+            <TouchableOpacity  >
+              <Text style={styles.btnCheckoutText}>PLACE ORDER</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -149,6 +156,14 @@ const styles = StyleSheet.create({
     width: 100,
     backgroundColor: "#A10035",
     borderRadius: 5,
+    height: 40,
+  },
+
+  btnRemoveText:{
+    color: "white",
+    textAlign: "center",
+    fontWeight: "bold",
+    marginTop: 10
   },
 
   totalItemContainer: {
@@ -181,6 +196,15 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     marginTop: 25,
     borderRadius: 5,
+    height: 50,
+  },
+
+  btnCheckoutText:{
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
+    textAlign: "center",
+    marginTop: 13,
   },
 });
 export default CartScreen;
