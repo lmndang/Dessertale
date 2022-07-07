@@ -6,6 +6,29 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  row: {
+    flexDirection: "row",
+  },
+  column: {
+    flexDirection: "column",
+    alignItems: "center",
+  }, 
+  text: {
+     color: '#FF869E',
+     fontFamily: 'Times New Roman',
+     fontSize: 15,
+     letterSpacing: 2,
+     textAlign: 'center',
+  },
+  button: {
+        flexDirection: 'row', 
+        height: 20, 
+        backgroundColor: 'yellow',
+        alignItems: 'right',
+        justifyContent: 'center',
+        marginTop: 50,
+        elevation:3,
+    },
 });
 
-export default styles;
+export default styles; 
