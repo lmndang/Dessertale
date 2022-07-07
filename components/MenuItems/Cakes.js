@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { FlatList } from "react-native";
+import { FlatList , TouchableOpacity} from "react-native";
 import TextStyle from "../AppStyles/TextStyle";
 import ViewProducts from "../AppStyles/ViewProducts";
 import ImageContainer from "../ImageContainer";
 import ScrollViewStyle from "../AppStyles/ScrollViewStyle";
 
 //Cakes Screen
-const Cakes = () => {
+const Cakes = (props) => {
   const [basicCakes, setBasicCakes] = useState([]);
   const [fruitCakes, setFruitCakes] = useState([]);
   const [cheeseCakes, setCheeseCakes] = useState([]);
@@ -21,13 +21,15 @@ const Cakes = () => {
       });
   }, []);
 
+  const navigation = props.getNavigationFromProps;
+
   return (
     <ScrollViewStyle>
       <ViewProducts>
         <TextStyle>Regular Cakes</TextStyle>
          <FlatList
          data = {basicCakes}
-         renderItem={({item}) => <ImageContainer key={item.id} img={item.img} name={item.name} />}
+         renderItem={({item}) => <TouchableOpacity onPress={() => navigation.navigate("ProductDetail", {detail: item})}><ImageContainer key={item.id} img={item.img} name={item.name} /></TouchableOpacity>}
          horizontal= {true}
          />
       </ViewProducts>
@@ -35,7 +37,7 @@ const Cakes = () => {
         <TextStyle>Fruit Cakes</TextStyle>
         <FlatList
          data = {fruitCakes}
-         renderItem={({item}) => <ImageContainer key={item.id} img={item.img} name={item.name} />}
+         renderItem={({item}) => <TouchableOpacity onPress={() => navigation.navigate("ProductDetail", {detail: item})}><ImageContainer key={item.id} img={item.img} name={item.name} /></TouchableOpacity>}
          horizontal= {true}
          />
       </ViewProducts>
@@ -43,7 +45,7 @@ const Cakes = () => {
         <TextStyle>Cheese Cakes</TextStyle>
         <FlatList
          data = {cheeseCakes}
-         renderItem={({item}) => <ImageContainer key={item.id} img={item.img} name={item.name} />}
+         renderItem={({item}) => <TouchableOpacity onPress={() => navigation.navigate("ProductDetail", {detail: item})}><ImageContainer key={item.id} img={item.img} name={item.name} /></TouchableOpacity>}
          horizontal= {true}
          />
       </ViewProducts>

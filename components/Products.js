@@ -8,20 +8,21 @@ import Pancakes from "./MenuItems/Pancakes";
 //Products Screen
 const Products = (props) => {
   const btnClicked = props.route.params.title;
+  
   if(btnClicked === "Cakes"){
-    return (<Cakes></Cakes>)
+    return (<Cakes getNavigationFromProps={props.route.params.passNavigation}></Cakes>)
   }
   else if(btnClicked === "Ice Creams"){
-    return (<IceCreams></IceCreams>)
+    return (<IceCreams getNavigationFromProps={props.route.params.passNavigation}></IceCreams>)
   }
   else if(btnClicked === "Cupcakes"){
-    return (<Cupcakes></Cupcakes>)
+    return (<Cupcakes getNavigationFromProps={props.route.params.passNavigation}></Cupcakes>)
   }
   else if(btnClicked === "Waffles"){
-    return (<Waffles></Waffles>)
+    return (<Waffles getNavigationFromProps={props.route.params.passNavigation}></Waffles>)
   }
   else if(btnClicked === "Pancakes"){
-    return (<Pancakes></Pancakes>)
+    return (<Pancakes getNavigationFromProps={props.route.params.passNavigation}></Pancakes>)
   }
   
   
