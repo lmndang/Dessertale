@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, Alert } from 'react-native';
 import styles from '../Styles';
 
 import ProductCreate from './ProductCreate';
@@ -40,6 +40,7 @@ const CakeMenu = () => {
     var str = cakeName + ' | ' + buttercreamName + ' | ' + toppingName;
     var cake = { name: 'Custom Cake', detail: str, price: 50.45 };
     addItemToCart(itemOnCart +1,cake);
+    Alert.alert("Custom cake added to cart!", "");
   };
 
   return (

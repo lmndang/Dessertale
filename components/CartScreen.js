@@ -16,7 +16,7 @@ const windowWidth = Dimensions.get("window").width;
 
 //Cart Screen
 const CartScreen = () => {
-  const { cartData, itemOnCart } = useAppContext();
+  const { cartData, itemOnCart, removeCartItem } = useAppContext();
   let subtotal = 0.0;
   let discount = 0.0;
   let tax = 0.0;
@@ -27,10 +27,10 @@ const CartScreen = () => {
     return true;
   });
 
-  const removeBtnHandler = (id) =>{
-    //console.log(id);
-    console.log("This is got clicked");
-  }
+  // const removeBtnHandler = (id) =>{
+  //   //console.log(id);
+  //   console.log("This is got clicked");
+  // }
 
   //Calculate total
   discount = subtotal * 0.1;
@@ -62,7 +62,7 @@ const CartScreen = () => {
 
                 <View style={styles.btnContainer}>
                   <View style={styles.btnRemove}>
-                    <Button color="white" onPress={removeBtnHandler(index)} title="Remove" />
+                    <Button color="white" onPress={() => removeCartItem(itemOnCart -1, index)} title="Remove" />
                   </View>
                 </View>
               </View>
