@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, ScrollView } from "react-native";
-import ImageContainer from "./ImageContainer";
-//import styles from "./Styles";
+import { Text, View, StyleSheet, ScrollView, Image } from "react-native";
 
 //Home Screen
 const HomeScreen = () => {
@@ -28,7 +26,13 @@ const HomeScreen = () => {
           <ScrollView horizontal={true}>
             {bestSellerList.map((item) => {
               return (
-                <ImageContainer key={item.id} img={item.img} name={item.name} />
+                <View key={item.id} style={styles.imageBox}>
+                  <Image
+                    style={styles.images}
+                    source={{ uri: `${item.img}` }}
+                  />
+                  <Text style={{ textAlign: "center" }}>{item.name}</Text>
+                </View>
               );
             })}
           </ScrollView>
@@ -43,7 +47,13 @@ const HomeScreen = () => {
           <View style={styles.imageContainer}>
             {topCreationList.map((item) => {
               return (
-                <ImageContainer key={item.id} img={item.img} name={item.name} />
+                <View key={item.id} style={styles.imageBox}>
+                  <Image
+                    style={styles.images}
+                    source={{ uri: `${item.img}` }}
+                  />
+                  <Text style={{ textAlign: "center" }}>{item.name}</Text>
+                </View>
               );
             })}
           </View>
@@ -86,6 +96,11 @@ const styles = StyleSheet.create({
     marginTop: 30,
     color: "#A10035",
     fontWeight: "bold",
+  },
+
+  images: {
+    height: 125,
+    width: 125,
   },
 });
 export default HomeScreen;
