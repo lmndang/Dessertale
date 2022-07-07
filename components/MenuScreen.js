@@ -41,14 +41,9 @@ const Menu = ({ navigation }) => {
 import Products from "./Products";
 import ProductDetail from "./ProductDetail";
 
-
 const MenuScreen = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Cake" component={Cake} />
-      <Stack.Screen name="Setting" component={Setting} />
-      <Stack.Screen name="Product" component={Product} />
       <Stack.Screen
         name="Our Varieties!"
         component={Menu}
