@@ -27,6 +27,12 @@ const CartScreen = () => {
     return true;
   });
 
+  const removeBtnHandler = (id) =>{
+    //console.log(id);
+    console.log("This is got clicked");
+  }
+
+  //Calculate total
   discount = subtotal * 0.1;
   total = subtotal - discount;
   tax = total * 0.13;
@@ -42,9 +48,9 @@ const CartScreen = () => {
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.box}>
-          {cartData.map((item) => {
+          {cartData.map((item, index) => {
             return (
-              <View style={styles.cartItemContainer}>
+              <View key={index} style={styles.cartItemContainer}>
                 <View>
                   <View style={styles.itemHeading}>
                     <Text style={styles.itemTitle}>{item.name}</Text>
@@ -56,7 +62,7 @@ const CartScreen = () => {
 
                 <View style={styles.btnContainer}>
                   <View style={styles.btnRemove}>
-                    <Button color="white" title="Remove" />
+                    <Button color="white" onPress={removeBtnHandler(index)} title="Remove" />
                   </View>
                 </View>
               </View>

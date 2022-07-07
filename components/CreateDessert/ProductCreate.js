@@ -46,10 +46,10 @@ const ProductCreate = (props) => {
         />
 
         <View style={styles.column}>
-          {data.map((d) => {
+          {data.map((d, index) => {
             if (d.id === id) {
               return (
-                <Text style={styles.text} key={d.d}>
+                <Text style={styles.text} key={index}>
                   {d.name}&nbsp;
                 </Text>
               );
