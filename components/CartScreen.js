@@ -2,15 +2,15 @@ import React from "react";
 import { Text, View, StyleSheet, Dimensions, Button } from "react-native";
 //import styles from "./Styles";
 
-//import { useAppContext } from "./context/appContext";
+import { useAppContext } from "./context/appContext";
 
 const windowWidth = Dimensions.get("window").width;
 //const windowHeight = Dimensions.get("window").height;
 
 //Cart Screen
 const CartScreen = () => {
-  // const { itemOnCart } = useAppContext();
-  // <Text>{itemOnCart}</Text>
+  const { cartData } = useAppContext();
+  console.log(cartData);
 
   return (
     <View style={styles.container}>
@@ -19,7 +19,7 @@ const CartScreen = () => {
           <View>
             <View style={styles.itemHeading}>
               <Text style={styles.itemTitle}>Custom Ice-cream</Text>
-              <Text style={styles.itemPrice}>10.25$</Text>
+              <Text style={styles.itemPrice}>$10.25</Text>
             </View>
 
             <Text style={styles.itemDetails}>
@@ -38,7 +38,7 @@ const CartScreen = () => {
           <View>
             <View style={styles.itemHeading}>
               <Text style={styles.itemTitle}>Custom Waffle</Text>
-              <Text style={styles.itemPrice}>12.75$</Text>
+              <Text style={styles.itemPrice}>$12.75</Text>
             </View>
 
             <Text style={styles.itemDetails}>
