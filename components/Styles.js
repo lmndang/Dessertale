@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
   }, 
   text: {
      color: '#FF869E',
-     fontFamily: 'Times New Roman',
      fontSize: 15,
      letterSpacing: 2,
      textAlign: 'center',

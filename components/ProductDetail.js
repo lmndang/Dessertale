@@ -1,15 +1,20 @@
 import * as React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, Platform } from "react-native";
-
+import { View, Text, Image, StyleSheet, TouchableOpacity, Platform, Alert } from "react-native";
 
 import ScrollViewStyle from "./AppStyles/ScrollViewStyle";
 
+import {useAppContext} from "./context/appContext";
+
 //Products Screen
 const ProductDetail = (props) => {
+  const { itemOnCart, addItemToCart } = useAppContext();
   const productDetailObj = props.route.params.detail;
+  const productAddToCart = {name: productDetailObj.name, detail: productDetailObj.description, price: 12.75}
 
   const callFun = () => {
-    alert("Image Clicked!!!");
+    addItemToCart(itemOnCart+1, productAddToCart);
+
+    Alert.alert("Item added to cart", "");
   };
 
   return (

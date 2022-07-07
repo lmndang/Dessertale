@@ -65,7 +65,6 @@ const WaffleMenu = () => {
             <Text
               style={{
                 color: '#FF869E',
-                fontFamily: 'Times New Roman',
                 fontSize: 20,
                 fontWeight: 'bold',
                 letterSpacing: 2,

@@ -36,14 +36,14 @@ const MoreScreen = () => {
         <View>
           <MapView
             style={styles.map}
-            showsUserLocation
-            followUserLocation
-            initialRegion={{
-              latitude: 43.761539,
-              longitude: -79.411079,
-              latitudeDelta: 0.25,
-              longitudeDelta: 0.04,
-            }}
+            // showsUserLocation
+            // followUserLocation
+            // initialRegion={{
+            //   latitude: 43.761539,
+            //   longitude: -79.411079,
+            //   latitudeDelta: 0.25,
+            //   longitudeDelta: 0.04,
+            // }}
           >
             <MapView.Marker
               title="Dessertale at Bayview Ave"
