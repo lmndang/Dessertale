@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Text, View, Alert } from 'react-native';
 import styles from '../Styles';
+import Options from './Options';
 
 import ProductCreate from './ProductCreate';
 import ScrollView from '../AppStyles/ScrollViewStyle';
@@ -13,6 +14,10 @@ import ThemeButton from "../AppStyles/ThemeButton";
 const WaffleMenu = () => {
 
   const { itemOnCart, addItemToCart } = useAppContext();
+
+  const [baseType, setBaseType] = useState('Regular');
+  const [iceType, setIceType] = useState('Regular');
+
 
   const [base, setBase] = useState([]);
   const [baseName, setBaseName] = useState('');
@@ -43,10 +48,19 @@ const WaffleMenu = () => {
   }, []);
 
   const addToCart = () => {
-    var str = baseName + ' | ' + iceName + ' | ' + toppingName;
-    var waffle = { name: 'Custom Waffle', detail: str, price: 10.5 };
+    var str =
+      baseType +
+      ' ' +
+      baseName +
+      ' | ' +
+      iceType +
+      ' ' +
+      iceName +
+      ' | ' +
+      toppingName;
+    var waffle = { name: 'Custom Waffle', detail: str, price: 10.25 };
     addItemToCart(itemOnCart +1,waffle);
-    Alert.alert("Custom cupcake added to cart!", "");
+    Alert.alert("Custom waffle added to cart!", "");
   };
 
   return (
@@ -86,6 +100,7 @@ const WaffleMenu = () => {
           name={setIceName}
           imgStyle={{ width: 130, height: 130 }}
         />
+         <Options type={setIceType} currentType={iceType} /> 
         <View
           style={{
             borderTopWidth: 20,
@@ -98,6 +113,7 @@ const WaffleMenu = () => {
             name={setBaseName}
             imgStyle={{ width: 220, height: 180 }}
           />
+          <Options type={setBaseType} currentType={baseType} />
         </View>
         
         <View style= {{display: 'flex', alignItems:'center'}}>

@@ -1,32 +1,36 @@
-import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { Text, View, Alert } from 'react-native';
-import styles from '../Styles';
+import * as React from "react";
+import { useEffect, useState } from "react";
+import { Text, View, Alert } from "react-native";
+import styles from "../Styles";
+import Options from "./Options";
 
-import ProductCreate from './ProductCreate';
-import ScrollView from '../AppStyles/ScrollViewStyle';
+import ProductCreate from "./ProductCreate";
+import ScrollView from "../AppStyles/ScrollViewStyle";
 import ThemeButton from "../AppStyles/ThemeButton";
 
-import {useAppContext} from "../context/appContext";
+import { useAppContext } from "../context/appContext";
 
 const IceCreamMenu = () => {
-
   const { itemOnCart, addItemToCart } = useAppContext();
 
+  const [coneType, setConeType] = useState("Regular");
+  const [iceType, setIceType] = useState("Regular");
+  const [toppingType, setToppingType] = useState("Regular");
+
   const [cone, setCone] = useState([]);
-  const [coneName, setConeName] = useState('');
+  const [coneName, setConeName] = useState("");
 
   const [ice, setIce] = useState([]);
-  const [iceName, setIceName] = useState('');
+  const [iceName, setIceName] = useState("");
 
   const [sprinkles, setSprinkles] = useState([]);
-  const [sprinklesName, setSprinklesName] = useState('');
+  const [sprinklesName, setSprinklesName] = useState("");
 
   const [topping, setTopping] = useState([]);
-  const [toppingName, setToppingName] = useState('');
+  const [toppingName, setToppingName] = useState("");
 
   useEffect(() => {
-    fetch('https://dessertale-api.herokuapp.com/IceCream')
+    fetch("https://dessertale-api.herokuapp.com/IceCream")
       .then((response) => response.json())
       .then((data) => {
         setCone(data.cone);
@@ -45,10 +49,22 @@ const IceCreamMenu = () => {
 
   const addToCart = () => {
     var str =
-      coneName + ' | ' + iceName + ' | ' + sprinklesName + ' | ' + toppingName;
-    var iceCream = { name: 'Custom IceCream', detail: str, price: 6.75 };
-    addItemToCart(itemOnCart +1,iceCream);
-    Alert.alert("Custom cupcake added to cart!", "");
+      coneType +
+      ' ' +
+      coneName +
+      ' | ' +
+      iceType +
+      ' ' +
+      iceName +
+      ' | ' +
+      sprinklesName +
+      ' | ' +
+      toppingType +
+      ' ' +
+      toppingName;
+    var iceCream = { name: "Custom Ice-cream", detail: str, price: 6.75 };
+    addItemToCart(itemOnCart + 1, iceCream);
+    Alert.alert("Custom Ice-cream added to cart!", "");
   };
 
   return (
@@ -57,24 +73,26 @@ const IceCreamMenu = () => {
         <View
           style={{
             borderTopWidth: 20,
-            borderTopColor: 'transparent',
+            borderTopColor: "transparent",
             borderBottomWidth: 20,
-            borderBottomColor: 'transparent',
-          }}>
-            
+            borderBottomColor: "transparent",
+          }}
+        >
           <View
             style={{
-              alignItems: 'center',
+              alignItems: "center",
               flex: 0.2,
-            }}>
+            }}
+          >
             <Text
               style={{
-                color: '#FF869E',
+                color: "#FF869E",
                 fontSize: 20,
-                fontWeight: 'bold',
+                fontWeight: "bold",
                 letterSpacing: 2,
-                textAlign: 'center',
-              }}>
+                textAlign: "center",
+              }}
+            >
               Build Your Own IceCream
             </Text>
           </View>
@@ -87,42 +105,48 @@ const IceCreamMenu = () => {
         <View
           style={{
             borderTopWidth: 30,
-            borderTopColor: 'transparent',
-          }}>
+            borderTopColor: "transparent",
+          }}
+        >
           <ProductCreate
             data={topping}
             name={setToppingName}
             imgStyle={{ width: 120, height: 110 }}
           />
+          <Options type={setToppingType} currentType={toppingType} />
         </View>
         <View
           style={{
             borderTopWidth: 30,
-            borderTopColor: 'transparent',
-          }}>
+            borderTopColor: "transparent",
+          }}
+        >
           <ProductCreate
             data={ice}
             name={setIceName}
             imgStyle={{ width: 160, height: 160 }}
           />
+          <Options type={setIceType} currentType={iceType} />
         </View>
         <View
           style={{
             borderTopWidth: 20,
-            borderTopColor: 'transparent',
+            borderTopColor: "transparent",
             borderBottomWidth: 10,
-            borderBottomColor: 'transparent',
-          }}>
+            borderBottomColor: "transparent",
+          }}
+        >
           <ProductCreate
             data={cone}
             name={setConeName}
             imgStyle={{ width: 225, height: 225 }}
           />
+          <Options type={setConeType} currentType={coneType} />
         </View>
-        
-        <View style= {{display: 'flex', alignItems:'center'}}>
-        <ThemeButton text="Add to cart"
-       onPress= {addToCart}/></View>
+
+        <View style={{ display: "flex", alignItems: "center" }}>
+          <ThemeButton text="Add to cart" onPress={addToCart} />
+        </View>
       </ScrollView>
     </View>
   );
