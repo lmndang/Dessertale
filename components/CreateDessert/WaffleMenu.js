@@ -54,7 +54,7 @@ const WaffleMenu = () => {
       <ScrollView style={styles.container}>
         <View
           style={{
-            borderTopWidth: 190,
+            borderTopWidth: 20,
             borderTopColor: 'transparent',
             borderBottomWidth: 20,
             borderBottomColor: 'transparent',
