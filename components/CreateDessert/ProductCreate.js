@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Button, Image } from 'react-native';
+import {  useState } from 'react';
+import { Text, View, Image } from 'react-native';
 import styles from '../Styles';
 import { AntDesign } from '@expo/vector-icons';
-import { IconButton } from 'react-native-paper';
-import { RadioForm } from 'react-native-simple-radio-button';
 
 const ProductCreate = (props) => {
   const data = props.data;

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Text, View, Button, Alert } from 'react-native';
+import { Text, View, Alert } from 'react-native';
 import styles from '../Styles';
 
 import ProductCreate from './ProductCreate';
 import ScrollView from '../AppStyles/ScrollViewStyle';
+import ThemeButton from "../AppStyles/ThemeButton";
 
 import {useAppContext} from "../context/appContext";
 
@@ -55,11 +56,12 @@ const IceCreamMenu = () => {
       <ScrollView style={styles.container}>
         <View
           style={{
-            borderTopWidth: 435,
+            borderTopWidth: 10,
             borderTopColor: 'transparent',
             borderBottomWidth: 20,
             borderBottomColor: 'transparent',
           }}>
+            
           <View
             style={{
               alignItems: 'center',
@@ -117,7 +119,10 @@ const IceCreamMenu = () => {
             imgStyle={{ width: 225, height: 225 }}
           />
         </View>
-        <Button color="#FFC4C4" title="Add" onPress={addToCart}></Button>
+        
+        <View style= {{display: 'flex', alignItems:'center'}}>
+        <ThemeButton text="Add to cart"
+       onPress= {addToCart}/></View>
       </ScrollView>
     </View>
   );
