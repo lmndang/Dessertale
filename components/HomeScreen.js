@@ -16,50 +16,50 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.box}>
-        <View>
-          <Text style={styles.title}>Best Sellers</Text>
-        </View>
-
-        <View style={styles.imageContainer}>
-          <ScrollView horizontal={true}>
-            {bestSellerList.map((item) => {
-              return (
-                <View key={item.id} style={styles.imageBox}>
-                  <Image
-                    style={styles.images}
-                    source={{ uri: `${item.img}` }}
-                  />
-                  <Text style={{ textAlign: "center" }}>{item.name}</Text>
-                </View>
-              );
-            })}
-          </ScrollView>
-        </View>
-      </View>
-
-      <View>
+      <View style={styles.container}>
         <View style={styles.box}>
           <View>
-            <Text style={styles.title}>Top Creations</Text>
+            <Text style={styles.title}>Best Sellers</Text>
           </View>
+
           <View style={styles.imageContainer}>
-            {topCreationList.map((item) => {
-              return (
-                <View key={item.id} style={styles.imageBox}>
-                  <Image
-                    style={styles.images}
-                    source={{ uri: `${item.img}` }}
-                  />
-                  <Text style={{ textAlign: "center" }}>{item.name}</Text>
-                </View>
-              );
-            })}
+            <ScrollView horizontal={true}>
+              {bestSellerList.map((item) => {
+                return (
+                  <View key={item.id} style={styles.imageBox}>
+                    <Image
+                      style={styles.images}
+                      source={{ uri: `${item.img}` }}
+                    />
+                    <Text style={{ textAlign: "center" }}>{item.name}</Text>
+                  </View>
+                );
+              })}
+            </ScrollView>
+          </View>
+        </View>
+
+        <View>
+          <View style={styles.box}>
+            <View>
+              <Text style={styles.title}>Top Creations</Text>
+            </View>
+            <View style={styles.imageContainer}>
+              {topCreationList.map((item) => {
+                return (
+                  <View key={item.id} style={styles.imageBoxTop}>
+                    <Image
+                      style={styles.images}
+                      source={{ uri: `${item.img}` }}
+                    />
+                    <Text style={{ textAlign: "center" }}>{item.name}</Text>
+                  </View>
+                );
+              })}
+            </View>
           </View>
         </View>
       </View>
-    </View>
   );
 };
 
@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
   },
 
   box: {
-    height: 230,
-    width: 370,
+    height: 280,
+    width: 400,
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 100,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    height: 180,
+    height: 200,
   },
 
   title: {
@@ -100,9 +100,19 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
+  imageBox: {
+    marginTop: 40,
+    marginLeft: 10,
+  },
+
+  imageBoxTop: {
+    marginTop: 40,
+    marginRight: 5,
+  },
+
   images: {
-    height: 125,
-    width: 125,
+    height: 130,
+    width: 130,
   },
 });
 export default HomeScreen;
