@@ -56,7 +56,7 @@ const IceCreamMenu = () => {
       <ScrollView style={styles.container}>
         <View
           style={{
-            borderTopWidth: 10,
+            borderTopWidth: 20,
             borderTopColor: 'transparent',
             borderBottomWidth: 20,
             borderBottomColor: 'transparent',

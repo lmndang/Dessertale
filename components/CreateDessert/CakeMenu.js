@@ -59,7 +59,7 @@ const CakeMenu = () => {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container}>
-        <View style={{ borderTopWidth: 160, borderTopColor: "transparent" }}>
+        <View style={{ borderTopWidth: 20 ,  borderTopColor: 'transparent'}}>
           <View
             style={{
               alignItems: "center",
