@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Text, View, Button, Alert } from 'react-native';
+import { Text, View, Alert } from 'react-native';
 import styles from '../Styles';
 
 import ProductCreate from './ProductCreate';
 import ScrollView from '../AppStyles/ScrollViewStyle';
 
 import {useAppContext} from "../context/appContext";
+
+import ThemeButton from "../AppStyles/ThemeButton";
 
 const WaffleMenu = () => {
 
@@ -97,10 +99,10 @@ const WaffleMenu = () => {
             imgStyle={{ width: 220, height: 180 }}
           />
         </View>
-        <Button
-          color="#FFC4C4"
-          title="Add to cart"
-          onPress={addToCart}></Button>
+        
+        <View style= {{display: 'flex', alignItems:'center'}}>
+        <ThemeButton text="Add to cart"
+       onPress= {addToCart}/></View>
       </ScrollView>
     </View>
   );

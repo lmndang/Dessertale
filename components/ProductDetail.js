@@ -1,9 +1,11 @@
 import * as React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, Platform, Alert } from "react-native";
+import { View, Text, Image, StyleSheet, Alert } from "react-native";
 
 import ScrollViewStyle from "./AppStyles/ScrollViewStyle";
 
 import {useAppContext} from "./context/appContext";
+
+import ThemeButton from "./AppStyles/ThemeButton";
 
 //Products Screen
 const ProductDetail = (props) => {
@@ -36,11 +38,8 @@ const ProductDetail = (props) => {
         </Text>
 
       <View style={productDetailStyle.btnBox}>
-        <TouchableOpacity activeOpacity={0.5} onPress={callFun}>
-          <View style={productDetailStyle.btn}>
-            <Text style={productDetailStyle.txt}>Add to Cart</Text>
-          </View>
-        </TouchableOpacity>
+       <ThemeButton text="Add to cart"
+       onPress= {callFun} />
       </View>
     </ScrollViewStyle>
   );
@@ -87,34 +86,19 @@ const productDetailStyle = StyleSheet.create({
   },
 
   btnBox: {
+    // position:'absolute',
+       alignSelf: "flex-end",
+       bottom: 0,
+
     flex: 1,
     justifyContent: 'flex-end',
     // display: "flex",
     margin: 20,
-    marginTop: 60,
-  },
-
-  btn: {
-    position:'absolute',
-    alignSelf: "flex-end",
-    bottom: 0,
-    width: 130,
-    height: 50,
-    borderRadius: 24,
-    alignItems: "center",
-    justifyContent: "center",
-    ...Platform.select({
-      ios: { backgroundColor: "#A10035" },
-      android: { backgroundColor: "#A10035"}
-    })
-  },
-  txt: {
-    color: "white",
-    fontSize: 18,
+    marginTop: 10,
   },
 
   background: {
-    backgroundColor:'#FFC0CB'
+    backgroundColor:'#FFC4C4'
   },
 });
 

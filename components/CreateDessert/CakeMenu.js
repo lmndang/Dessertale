@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Text, View, Button, Alert } from 'react-native';
+import { Text, View,  Alert } from 'react-native';
 import styles from '../Styles';
 
 import ProductCreate from './ProductCreate';
 import ScrollView from '../AppStyles/ScrollViewStyle';
+import ThemeButton from "../AppStyles/ThemeButton";
 
 import {useAppContext} from "../context/appContext";
 
@@ -84,7 +85,9 @@ const CakeMenu = () => {
             </View>
           
         </View>
-      <Button color="#FFC4C4" title="Add to Cart" onPress={addToCart}></Button>
+        <View style= {{display: 'flex', alignItems:'center'}}>
+        <ThemeButton text="Add to cart"
+       onPress= {addToCart}/></View>
       </ScrollView>
         
     </View>

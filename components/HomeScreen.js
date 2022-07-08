@@ -73,8 +73,10 @@ const styles = StyleSheet.create({
   },
 
   box: {
-    height: 250,
-    width: 390,
+    height: 230,
+    width: 370,
+    marginLeft: 10,
+    marginRight: 10,
     marginBottom: 100,
     display: "flex",
     flexDirection: "column",
